@@ -1,3 +1,103 @@
 /* Exercice Flexbox - Galerie d'images */
 /* Écris ton code CSS ici */
+/* Styles de base pour la démo */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    min-height: 100vh; /* S'assurer que le body prend au moins toute la hauteur de la fenêtre */
+    display: flex; /* Utiliser flex pour la disposition globale (header, main, footer) */
+    flex-direction: column;
+}
 
+header {
+    padding: 20px;
+    background-color: #f4f4f4;
+    /* 1. Activer Flexbox dans le header */
+    display: flex; 
+    /* 2. Centrer horizontalement les éléments enfants (h1 et p) */
+    justify-content: center; 
+    /* 3. Centrer verticalement les éléments enfants */
+    align-items: center; 
+    /* S'assurer que les éléments sont empilés verticalement dans le header */
+    flex-direction: column; 
+    height: 150px; /* Exemple de hauteur pour visualiser le centrage vertical */
+}
+
+footer {
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+main {
+    flex-grow: 1; /* Permet à la zone principale de prendre l'espace restant */
+    padding: 20px 0;
+    /* Optionnel: pour centrer verticalement le contenu de main si nécessaire */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------------------------------------------------------------- */
+/* Styles Flexbox pour la Galerie */
+/* ------------------------------------------------------------------- */
+
+.gallery {
+    /* 1. Activer Flexbox pour le conteneur */
+    display: flex; 
+
+    /* 2. Permettre aux éléments de passer à la ligne (pour le rendu responsive) */
+    flex-wrap: wrap; 
+
+    /* 3. Centrer horizontalement les éléments */
+    /* Space-around ou Space-between peut être utilisé, 
+       mais 'center' ou 'justify-content: center;' est préférable pour un centrage simple. 
+       Pour centrer les lignes (pas les éléments), utilisez align-content. */
+    justify-content: center; 
+
+    /* 4. Donner une largeur maximale pour éviter que les images ne s'étendent trop */
+    max-width: 1200px;
+    margin: 0 auto; /* Centrer le conteneur .gallery lui-même */
+    padding: 0 10px; /* Ajouter un peu de padding sur les côtés pour les petits écrans */
+    align-content: center;
+}
+
+.gallery img {
+    /* 5. Gérer l'espacement de 20px entre les images */
+    margin: 10px; /* 10px tout autour = 20px entre les images */
+    
+    /* Optionnel: S'assurer que les images ne deviennent pas trop grandes */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    flex-basis: calc(50% - 20px);
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------------- */
+/* Media Query pour le Responsiveness (Espace 10px quand l'écran est petit) */
+/* ------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .gallery img {
+        /* 2. Réduire l'espace entre les images à 10px (5px tout autour) sur les petits écrans */
+        margin: 5px;
+        flex-basis: calc(33.333% - 20px);
+    }
+}
+
+@media (min-width: 1201px) {
+    .gallery img {
+        /* Largeur de chaque image = 25% du conteneur, moins l'espace */
+        /* calc((100% / 4) - 20px) = 25% - 20px */
+        flex-basis: calc(25% - 20px); 
+    }
+}
