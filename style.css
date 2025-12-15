@@ -1,6 +1,12 @@
 /* Exercice Flexbox - Galerie d'images */
 /* Écris ton code CSS ici */
 /* Styles de base pour la démo */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: sans-serif;
     margin: 0;
