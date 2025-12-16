@@ -93,11 +93,12 @@ main {
 /* Media Query pour le Responsiveness (Espace 10px quand l'écran est petit) */
 /* ------------------------------------------------------------------- */
 
-@media (max-width: 768px) {
+@media (max-width: 490px) {
     .gallery img {
         /* 2. Réduire l'espace entre les images à 10px (5px tout autour) sur les petits écrans */
         margin: 5px;
         flex-basis: calc(33.333% - 20px);
+        width: 170px;
     }
 }
 
